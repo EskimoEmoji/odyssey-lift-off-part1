@@ -34,7 +34,15 @@ const server = new ApolloServer({
   },
 });
 
-server.listen({ port: process.env.PORT || 4000 }).then(() => {
+// server.listen({ port: process.env.PORT || 4000 }).then(() => {
+//   console.log(`Server is running 🚀
+//   https://studio.apollographql.com/dev`);
+// });
+//help
+async function startApolloServer(server) {
+  const { url, port } = await server.listen({ port: process.env.PORT || 4000 });
   console.log(`Server is running 🚀
-  https://studio.apollographql.com/dev`);
-});
+  Listening on port ${port}
+  Query at ${url}`);
+}
+startApolloServer(server);
